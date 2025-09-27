@@ -17,8 +17,8 @@ public class Position {
         return column;
     }
 
-    public boolean isInBoard() {
-        return row >= 0 && row < 8 && column >= 0 && column < 8;
+    public boolean isNotInBoard() {
+        return row < 0 || row >= 8 || column < 0 || column >= 8;
     }
 
     public boolean equals(Position other) {

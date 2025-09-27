@@ -8,7 +8,7 @@ public class Knight extends Piece {
 
     @Override
     public boolean isValidMove(Position newPosition, Piece[][] board) {
-        if (!newPosition.isInBoard() || newPosition.equals(position)) {
+        if (newPosition.isNotInBoard() || newPosition.equals(position)) {
             return false;
         }
 
