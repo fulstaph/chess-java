@@ -25,10 +25,33 @@ public class ChessGame {
     }
 
     public boolean isInCheck(PieceColor kingColor) {
+        var kingPosition = findKingPosition(kingColor);
+        var otherColor = kingColor == PieceColor.WHITE ? PieceColor.BLACK : PieceColor.WHITE;
+        for (int row = 0; row < 8; row++) {
+            for (int col = 0; col < 8; col++) {
+                var piece = board.getPiece(new Position(row, col));
+                if (piece != null && piece.getColor() == otherColor) {
+                    if (piece.isValidMove(kingPosition, board.getBoard())) {
+                        return true;
+                    }
+                }
+            }
+        }
+
         return false;
     }
 
     private Position findKingPosition(PieceColor color) {
+        for (int row = 0; row < 8; row++) {
+            for (int col = 0; col < 8; col++) {
+                var position = new Position(row, col);
+                var piece = board.getPiece(position);
+
+                if (piece != null && piece.getColor() == color && piece instanceof King) {
+                    return position;
+                }
+            }
+        }
         return null;
     }
 
