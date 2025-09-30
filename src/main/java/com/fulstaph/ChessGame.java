@@ -52,7 +52,8 @@ public class ChessGame {
                 }
             }
         }
-        return null;
+
+        throw new RuntimeException("King not found?");
     }
 
     public boolean isCheckmate(PieceColor kingColor) {
